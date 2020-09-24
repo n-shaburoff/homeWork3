@@ -37,27 +37,28 @@ public class Group {
         }
     }
 
-    public void removeStudent(Student student) {
-        for(int i=0; i<students.length; i++) {
-            if(students[i].equals(student)) {
+    public boolean removeStudent(int id) {
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null && students[i].getStudent_number() == id) {
                 students[i] = null;
                 --numberOfStudents;
-                break;
+                return true;
             }
         }
+            return false;
     }
 
-
-    public Student searchStudent(String surname){
-        Student search = null;
-        for(Student student: students){
-            if(student != null && student.getSurname().toLowerCase().equals(surname.toLowerCase())){
-                search = student;
-                break;
+        public Student searchStudent (String surname){
+            Student search = null;
+            for (Student student : students) {
+                if (student != null && student.getSurname().toLowerCase().equals(surname.toLowerCase())) {
+                    search = student;
+                    break;
+                }
             }
+            return search;
         }
-        return search;
-    }
+
 
     @Override
     public String toString() {

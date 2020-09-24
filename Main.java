@@ -29,7 +29,7 @@ public class Main {
 
 		System.out.println(DO);
 		System.out.println();
-		DO.removeStudent(studList[1]);
+		DO.removeStudent(126);
 		System.out.println(DO);
 
 		System.out.println(DO.searchStudent("surname5"));
