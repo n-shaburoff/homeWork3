@@ -4,7 +4,10 @@ public class Group {
     private String name;
     private Student[] students;
     private int capacity=10;
-    private int numberOfStudents;
+
+    public Group() {
+        this.name = "unknown";
+    }
 
     public Group(String name) {
         students = new Student[capacity];
@@ -24,24 +27,25 @@ public class Group {
     }
 
 
-    public int getNumberOfStudents() {
-        return numberOfStudents;
-    }
-
     public void addStudents(Student newStudent) throws MyException{
-        if(numberOfStudents < capacity){
-            students[numberOfStudents++] = newStudent;
+        if (newStudent == null){
+            throw new IllegalArgumentException("Null student");
         }
-        else {
-            throw new MyException();
+        for (int i=0; i < students.length; i++) {
+            if(students[i] == null){
+                newStudent.setGroup(this.name);
+                students[i] = newStudent;
+                return;
+            }
         }
+        throw new MyException();
+
     }
 
     public boolean removeStudent(int id) {
         for (int i = 0; i < students.length; i++) {
-            if (students[i] != null && students[i].getStudent_number() == id) {
+            if (students[i] != null && students[i].getStudentNumber() == id) {
                 students[i] = null;
-                --numberOfStudents;
                 return true;
             }
         }
@@ -62,7 +66,7 @@ public class Group {
 
     @Override
     public String toString() {
-        for(int i = 0;i<numberOfStudents;i++){
+        for(int i = 0;i<students.length;i++){
             if(students[i] != null){
                 System.out.println(students[i].getSurname());
             }else {
@@ -70,7 +74,7 @@ public class Group {
             }
 
         }
-        String s = "\nGroup name:" + name + "\nNumber of student:" + numberOfStudents;
+        String s = "\nGroup name:" + name;
         return s;
     }
 }

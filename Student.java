@@ -1,29 +1,39 @@
 package com.progKiev;
 
 public class Student extends Person{
-    private int student_number;
+    private int studentNumber;
+    private String group;
 
-    public Student(String name, String surname, Gender gender, int student_number) {
+    public Student(String name, String surname, Gender gender, int studentNumber, String group) {
         super(name, surname, gender);
-        this.student_number = student_number;
+        this.studentNumber = studentNumber;
+        this.group = group;
     }
 
     public Student() {
         super();
     }
 
-    public double getStudent_number() {
-        return student_number;
+    public double getStudentNumber() {
+        return studentNumber;
     }
 
-    public void setStudent_number(int student_number) {
-        this.student_number = student_number;
+    public void setStudentNumber(int studentNumber) {
+        this.studentNumber = studentNumber;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "student_number='" + student_number + '\'' +
+                "student_number='" + studentNumber + '\'' +
                 '}' + super.toString();
     }
 }
